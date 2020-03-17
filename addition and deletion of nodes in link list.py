@@ -45,7 +45,26 @@ class linkedlist(node):               # inherit class node
                 x = next
             pre.next = next
             x = None
-    
+   
+   
+    def prepend(self, data, nodes):
+        x = self.head
+        if x.data == nodes:                # adding node before head
+            new = node(data)
+            new.next = self.head
+            self.head = new
+        else:
+            pre = None
+            while(x):                        # adding nodes inbetween nodes in linked list
+                if x.data == nodes:
+                    break
+                pre = x
+                x = x.next
+            new = node(data)
+            pre.next = new
+            new.next = x
+
+
     def __str__(self):
         x = self.head
         c = ""
@@ -66,4 +85,8 @@ linklist_1.delete(9)
 
 print("after deletion")
 
+print(linklist_1)
+
+linklist_1.prepend(10, 3)
+print("after prepending 10 before 3")
 print(linklist_1)
